@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0e0e0e;
+    color: Red;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background: #1e1e1e;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Important for responsiveness */
+}
+
+nav h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack vertically by default */
+    width: 100%; /* Take full width on smaller screens */
+    display: none; /* Hide by default on smaller screens */
+    transition: all 0.3s ease; /* Smooth transitions for menu show/hide */
+}
+
+nav ul.active {
+    display: flex; /* Show when toggled */
+}
+
+nav ul li {
+    margin: 10px 0; /* Vertical margin for stacked items */
+    width: 100%; /* Ensure list items take full width */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block; /* Make links fill the list item width */
+    text-align: center;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #f0b90b;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    display: block; /* Show on smaller screens */
+}
+
+@media (min-width: 768px) {
+    nav ul {
+        display: flex; /* Horizontal menu on larger screens */
+        flex-direction: row;
+        width: auto;
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Horizontal margin for horizontal menu */
+        width: auto; /* Reset width */
+    }
+
+    nav ul li a {
+        text-align: left; /* Align text to the left in horizontal menu */
+    }
+
+    .menu-toggle {
+        display: none; /* Hide on larger screens */
+    }
+}
+
+.intro {
+    text-align: center;
+    padding: 100px 20px;
+    background: url('background.jpg');
+    background-size: cover;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #f0b90b;
+    color: #0e0e0e;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #d39e09;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e1e;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+/* No need for .popup.active anymore, controlled by JS */
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup form input,
+.popup form textarea,
+.popup form button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.popup form button {
+    background: #f0b90b;
+    color: #0e0e0e;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.popup form button:hover {
+    background: #d39e09;
+}
+
+.close-popup {
+    cursor: pointer;
+    color: #f0b90b;
+    float: right;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.close-popup:hover {
+    color: #d39e09;
+}
+
+footer {
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px; /*optional, adds space between main content and footer*/
+}
+
+.footer-content {
+    max-width: 1200px; /* Optional, limits width */
+    margin: 0 auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
