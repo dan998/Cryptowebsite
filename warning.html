@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,40 +19,121 @@
             min-height: 100vh;
             background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
             background-size: cover;
-        }.disclaimer {
-        width: 80%;
-        max-width: 600px;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+        }
 
-    .disclaimer h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
+        .disclaimer {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px; /* Added margin for spacing */
+        }
 
-    .disclaimer p {
-        line-height: 1.6;
-        font-size: 16px;
-    }
+        .disclaimer h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-    .logo {
-        margin-top: 20px;
-        width: 150px;
-        height: auto;
-        border-radius: 50%;
-    }
-</style>
+        .disclaimer p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
 
+        .logo {
+            margin-top: 20px;
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        /* Style for the Go Back to Home button */
+        .go-home-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .go-home-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .go-home-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Loading bar styles */
+        .loading-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #ccc;
+            margin-top: 20px;
+        }
+
+        .loading-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+        }
+
+        /* Percentage text style */
+        .loading-percentage {
+            margin-top: 5px;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        // Redirect to 'method.html' after 5 seconds
+        setTimeout(function() {
+            window.location.href = 'method.html';
+        }, 5000);
+
+        // Function to animate the loading bar and show the percentage
+        function updateLoadingBar() {
+            let loadingBar = document.getElementById('loading-bar');
+            let percentageText = document.getElementById('percentage-text');
+            let width = 0;
+            let interval = setInterval(function() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    loadingBar.style.width = width + '%';
+                    percentageText.textContent = width + '%';
+                }
+            }, 50); // Update every 50 milliseconds for a 5-second duration
+        }
+
+        // Start the loading bar when the page is loaded
+        window.onload = function() {
+            updateLoadingBar();
+        };
+    </script>
 </head>
 <body>
+    <!-- Go Back to Home Button -->
+    <div class="go-home-container">
+        <a href="index.html" class="go-home-btn">Go Back to Home</a>
+    </div>
+
     <div class="disclaimer">
         <h2>Disclaimer:</h2>
         <p>Every step toward growth involves risk, but we take risks to elevate, to improve, and to build better lives. This group is here to edify, empower, and push you toward greatness. Not every risk will yield immediate success, and sometimes, there may be losses along the way. But good risk leads to good results—whether through lessons learned or victories earned. Stay committed, stay uplifted, and trust the process. Big moves require bold faith & Works!</p>
     </div>
+
     <img src="logo.jpg" alt="Logo" class="logo">
-    <a href="index.html" class="cta-button" style="background-color: blue; color: white;">Continue</a>
+
+    <!-- Loading Bar -->
+    <div class="loading-bar-container">
+        <div id="loading-bar" class="loading-bar"></div>
+    </div>
+
+    <!-- Percentage Text -->
+    <div class="loading-percentage" id="percentage-text">0%</div>
 </body>
 </html>

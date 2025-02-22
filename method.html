@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Updates - Videos & Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .video-wrapper {
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .video-title {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #007BFF;
+        }
+
+        .post-wrapper {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-title {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .post-description {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .post-link {
+            font-size: 1.1em;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Daily Updates - Videos & Posts</h1>
+
+        <!-- Videos Section -->
+        <div id="video-container"></div>
+
+        <!-- Posts Section -->
+        <div id="post-container"></div>
+    </div>
+
+    <div class="footer">
+        <p>Powered by <a href="#">Your Website</a></p>
+    </div>
+
+    <script>
+        // Fetch the content (videos and posts) from the JSON file and display it
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                const videoContainer = document.getElementById('video-container');
+                const postContainer = document.getElementById('post-container');
+
+                // Display Videos
+                data.videos.forEach(video => {
+                    const videoElement = document.createElement('div');
+                    videoElement.classList.add('video-wrapper');
+
+                    const iframe = document.createElement('iframe');
+                    iframe.src = video.url;
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowfullscreen = true;
+
+                    const title = document.createElement('p');
+                    title.classList.add('video-title');
+                    title.textContent = video.title;
+
+                    videoElement.appendChild(iframe);
+                    videoElement.appendChild(title);
+
+                    videoContainer.appendChild(videoElement);
+                });
+
+                // Display Posts
+                data.posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('post-wrapper');
+
+                    const postTitle = document.createElement('p');
+                    postTitle.classList.add('post-title');
+                    postTitle.textContent = post.title;
+
+                    const postDescription = document.createElement('p');
+                    postDescription.classList.add('post-description');
+                    postDescription.textContent = post.description;
+
+                    const postLink = document.createElement('a');
+                    postLink.classList.add('post-link');
+                    postLink.href = post.url;
+                    postLink.target = '_blank';
+                    postLink.textContent = `Read more on ${post.platform}`;
+
+                    postElement.appendChild(postTitle);
+                    postElement.appendChild(postDescription);
+                    postElement.appendChild(postLink);
+
+                    postContainer.appendChild(postElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching content:', error);
+                document.body.innerHTML = '<p>Sorry, there was an error loading the updates.</p>';
+            });
+    </script>
+</body>
+</html>

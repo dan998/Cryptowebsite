@@ -1,0 +1,32 @@
+{
+  "videos": [
+    {
+      "title": "Video 1",
+      "url": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      "title": "Video 2",
+      "url": "https://www.youtube.com/embed/tgbNymZ7vqY"
+    }
+  ],
+  "posts": [
+    {
+      "platform": "YouTube",
+      "title": "New YouTube Video on Marketing Strategies",
+      "description": "Learn how to create successful marketing campaigns using YouTube. This post covers best practices and tips for 2025.",
+      "url": "https://www.youtube.com/channel/UCXXXXXXXXX"
+    },
+    {
+      "platform": "Facebook",
+      "title": "How to Grow Your Facebook Page",
+      "description": "A comprehensive guide to growing your Facebook presence. Learn effective strategies for increasing engagement and followers.",
+      "url": "https://www.facebook.com/XXXXXXXX"
+    },
+    {
+      "platform": "Twitter",
+      "title": "Top Twitter Marketing Tips for 2025",
+      "description": "Check out our latest blog post on how to market effectively on Twitter. Includes hashtag strategies and content ideas.",
+      "url": "https://twitter.com/XXXXXXXX"
+    }
+  ]
+}
